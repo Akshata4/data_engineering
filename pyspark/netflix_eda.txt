@@ -1,0 +1,93 @@
+1. Basic Descriptive Analysis
+How many movies and TV shows are there in the dataset?
+
+Group by type and count.
+
+What is the distribution of content by country?
+
+Count the number of titles per country.
+
+How many titles were added each year?
+
+Extract year from date_added and count by year.
+
+2. Content Insights
+What are the most common genres (listed_in) on Netflix?
+
+Split listed_in by comma, explode, and count occurrences.
+
+Who are the top 10 directors and actors by number of titles?
+
+Split director and cast, explode, and count.
+
+Which countries produce the most content for Netflix?
+
+Group by country and count.
+
+3. Temporal Trends
+How has the number of new titles added changed over time?
+
+Group by year/month from date_added and count.
+
+What is the trend in TV shows vs movies over the years?
+
+Group by type and year.
+
+4. Ratings & Duration
+What are the most common ratings (e.g., PG-13, TV-MA)?
+
+Group by rating and count.
+
+What is the average duration of movies?
+
+Extract numeric value from duration for movies and calculate mean.
+
+Which TV shows have the most seasons?
+
+Filter type == 'TV Show', extract number from duration, and find max.
+
+5. Advanced/Interesting Questions
+Which genres are most popular in different countries?
+
+Group by country and listed_in, count, and find top genres per country.
+
+Are there directors or actors who work across multiple countries?
+
+Analyze director/cast vs country.
+
+What is the distribution of release years?
+
+Histogram of release_year.
+
+6. Data Quality Checks
+How much missing data is there in each column?
+
+Count nulls per column.
+
+Are there duplicate titles?
+
+Check for duplicate title or show_id.
+
+7. Fun Analysis
+Which movie/TV show has the longest/shortest duration?
+
+Find all titles with a specific actor or director.
+
+How many international (multi-country) productions are there?
+
+Titles with multiple countries in the country field.
+
+PySpark Techniques You Will Practice
+Data loading and schema inference
+
+Filtering, grouping, and aggregation
+
+String manipulation and splitting columns
+
+Handling missing values
+
+Date parsing and extraction
+
+Exploding arrays (for genres, cast, etc.)
+
+Sorting and limiting results
