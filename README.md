@@ -62,3 +62,65 @@ Dimension tables store descriptive information that gives context to those numbe
 Fact tables = numbers and results.
 Dimension tables = details and descriptions that explain those numbers
 
+### Types of Fact Tables
+Fact tables in data warehousing come in several types, each designed for specific analytical needs and data scenarios. The main types are:
+
+1. Transaction Fact Table
+Purpose: Records individual business events or transactions at the most detailed (atomic) level.
+
+Characteristics: Each row represents a single event (e.g., a sale, an order, a click).
+
+Measures: Typically fully additive (can be summed across all dimensions).
+
+Example: A sales fact table where each row is a single sale, including date, product, customer, and sales amount.
+
+2. Periodic Snapshot Fact Table
+Purpose: Captures the state of business metrics at regular, predefined intervals (e.g., daily, monthly).
+
+Characteristics: Each row summarizes key metrics for a specific period, not individual transactions.
+
+Measures: Usually semi-additive (can be summed across some dimensions, like product or region, but not time).
+
+Example: A daily inventory table that records the end-of-day stock levels for each product.
+
+3. Accumulating Snapshot Fact Table
+Purpose: Tracks the progress of a business process that has a clear start and end, recording milestones as they occur.
+
+Characteristics: Each row is updated as the process advances through different stages (e.g., order placed, shipped, delivered).
+
+Measures: Often records durations or counts at each stage.
+
+Example: An order fulfillment table that tracks each order’s progress from placement to delivery, with columns for each milestone date.
+
+4. Factless Fact Table
+Purpose: Captures events or relationships between dimensions where there are no numeric measurements.
+
+Characteristics: Contains only foreign keys to dimensions, no measures.
+
+Example: A table recording student enrollments in courses (which students enrolled in which courses), or tracking attendance at events.
+
+### Fact Types in Data Warehousing
+
+This document describes the types of facts typically used in data warehousing and business intelligence systems. Understanding these fact types is crucial for designing effective data models and ensuring accurate reporting and analysis.
+
+#### Fact Type Table
+
+| Fact Type     | Can Sum Across All Dimensions? | Example                         | Note                                            |
+|---------------|-------------------------------|----------------------------------|-------------------------------------------------|
+| **Additive**      | Yes                           | Sales Amount                     | Can be summed across all dimensions such as time, product, or store. |
+| **Semi-Additive** | Some only                     | Account Balance                  | Can be summed across some dimensions (e.g., account), but not others (e.g., time). |
+| **Non-Additive**  | No                            | Profit Margin, Percentages       | These should be aggregated using averages or ratios rather than summed. |
+
+#### Definitions
+
+- **Additive Facts**: These can be summed across all dimensions in the data model. They are typically numeric values like revenue, quantity sold, etc.
+  
+- **Semi-Additive Facts**: These can be summed across some dimensions, but not all. A common example is account balance, which can be summed by account or product but not reliably over time.
+
+- **Non-Additive Facts**: These facts should not be summed at all. Instead, they require different types of aggregation such as averaging or ratio calculations. Examples include percentages and margins.
+
+### Usage Tips
+
+- Use **Additive** facts for transactional data and summary reports where totals are meaningful.
+- Use **Semi-Additive** facts with caution, ensuring the correct dimensions are used for aggregation.
+- Use **Non-Additive** facts with appropriate aggregation logic (e.g., weighted averages) in reporting tools.
